@@ -22,10 +22,9 @@
       background-color: var(--bg);
       color: var(--text);
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      overflow: hidden;
       position: relative;
       padding: 1rem;
     }
@@ -57,12 +56,19 @@
       border-radius: 20px;
       text-align: center;
       box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+      margin-bottom: 3rem;
     }
 
     h1 {
       font-size: clamp(2rem, 5vw, 2.6rem);
       font-weight: 700;
       margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      margin-bottom: 1.5rem;
+      text-align:center;
     }
 
     .tagline {
@@ -84,7 +90,7 @@
       transition: all 0.3s ease;
       font-size: 0.95rem;
       margin: 0.5rem;
-      min-width: 120px;
+      min-width: 140px;
     }
     .btn:hover {
       background-color: var(--primary-hover);
@@ -111,6 +117,43 @@
     }
     #spotify a:hover { text-decoration: underline; }
 
+    /* Services Section */
+    #services {
+      width: 100%;
+      max-width: 1100px;
+      padding: 2rem 1rem 4rem;
+    }
+
+    #services-container {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:1.5rem;
+    }
+
+    .service-card {
+      padding:1.5rem;
+      background: rgba(255,255,255,0.2);
+      border-radius:15px;
+      backdrop-filter:blur(6px);
+      cursor:pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .service-card h3 {
+      margin-bottom:0.5rem;
+    }
+
+    .service-card .details {
+      display:none;
+      margin-top:1rem;
+      font-size:0.9rem;
+    }
+
     @media (max-width:480px){
       .btn { width: 100%; margin: 0.5rem 0; }
     }
@@ -119,25 +162,21 @@
 
 <body>
   <script>
-    // Harmonized palette for bubbles (blues + complementary colors)
     const colors = [
-      "rgba(65,105,225,0.25)",  // royal blue
-      "rgba(100,149,237,0.25)", // cornflower blue
-      "rgba(70,130,180,0.25)",  // steel blue
-      "rgba(135,206,250,0.25)", // light sky blue
-      "rgba(173,216,230,0.25)", // light blue
-      "rgba(72,209,204,0.25)",  // medium turquoise
-      "rgba(123,104,238,0.25)"  // medium slate blue
+      "rgba(65,105,225,0.25)",  "rgba(100,149,237,0.25)", 
+      "rgba(70,130,180,0.25)",  "rgba(135,206,250,0.25)",
+      "rgba(173,216,230,0.25)","rgba(72,209,204,0.25)",
+      "rgba(123,104,238,0.25)"
     ];
 
-    for (let i = 0; i < 70; i++) { // more bubbles
+    for (let i = 0; i < 70; i++) {
       const bubble = document.createElement('div');
       bubble.classList.add('bubble');
       const size = Math.random() * 50 + 15;
       bubble.style.width = bubble.style.height = size + 'px';
       bubble.style.left = Math.random() * 100 + 'vw';
       bubble.style.background = `radial-gradient(circle at 30% 30%, ${colors[Math.floor(Math.random() * colors.length)]}, rgba(255,255,255,0.05))`;
-      bubble.style.animationDuration = (Math.random() * 5 + 3) + 's'; // faster
+      bubble.style.animationDuration = (Math.random() * 5 + 3) + 's';
       bubble.style.animationDelay = Math.random() * 3 + 's';
       document.body.appendChild(bubble);
     }
@@ -147,15 +186,279 @@
     <h1>Toluwalope Kolawole</h1>
     <p class="tagline">Consulting for media, creative, and tech brands ready to level up their reputation, reach, and revenue.</p>
 
-    <a class="btn" href="resume.pdf" target="_blank" rel="noopener noreferrer">📄 resume</a>
-    <a class="btn" href="mailto:tolu7711@gmail.com" rel="noopener noreferrer">✉️ email</a>
-    <a class="btn" href="https://linktr.ee/toluwalopekolawole" target="_blank" rel="noopener noreferrer">🌐 more</a>
+    <a class="btn" href="resume.pdf" target="_blank" rel="noopener noreferrer">📄 Resume</a>
+    <a class="btn" href="mailto:tolu7711@gmail.com" rel="noopener noreferrer">✉️ Email</a>
+    <a class="btn" href="#services">🌐 View My Services</a>
 
     <div id="spotify">
       <p>🎧 Loading your recently played track...</p>
     </div>
   </div>
 
+  <!-- Services Section -->
+  <section id="services">
+    <h2>Services</h2>
+    <div style="text-align:center; margin-bottom:2rem;">
+      <button class="btn" onclick="filterCategory('Business')">Business & Strategy</button>
+      <button class="btn" onclick="filterCategory('Operations')">Project & Operations</button>
+      <button class="btn" onclick="filterCategory('Media')">Media Expertise</button>
+      <button class="btn" onclick="filterCategory('All')">Show All</button>
+    </div>
+
+    <div id="services-container">
+      <!-- Business & Strategy -->
+      <div class="service-card" data-category="Business">
+        <h3>Business Development</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Tailored strategy to grow partnerships and revenue</p>
+          <p><strong>Duration:</strong> 1-2 weeks</p>
+          <p><strong>Pricing:</strong> $500+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Business">
+        <h3>Strategic Planning</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> 3-6 month actionable roadmap for business growth</p>
+          <p><strong>Duration:</strong> 2 weeks</p>
+          <p><strong>Pricing:</strong> $800+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Business">
+        <h3>Market Research & Analysis</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Detailed competitor, audience, and market trend report</p>
+          <p><strong>Duration:</strong> 1 week</p>
+          <p><strong>Pricing:</strong> $300+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Business">
+        <h3>Competitive Analysis</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> SWOT analysis & benchmarking</p>
+          <p><strong>Duration:</strong> 4-5 days</p>
+          <p><strong>Pricing:</strong> $200+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Business">
+        <h3>Financial Analysis / FP&A</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Review of financials to optimize budgeting and identify opportunities</p>
+          <p><strong>Duration:</strong> 1 week</p>
+          <p><strong>Pricing:</strong> $400+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Business">
+        <h3>Budgeting & Forecasting</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Custom budget plan & 6-12 month revenue forecast</p>
+          <p><strong>Duration:</strong> 3-5 days</p>
+          <p><strong>Pricing:</strong> $200+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Business">
+        <h3>Partnership & Stakeholder Management</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Recommendations & engagement plan for key stakeholders</p>
+          <p><strong>Duration:</strong> 5-7 days</p>
+          <p><strong>Pricing:</strong> $300+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Business">
+        <h3>Revenue Growth Strategies</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Actionable strategy to increase revenue streams</p>
+          <p><strong>Duration:</strong> 1 week</p>
+          <p><strong>Pricing:</strong> $400+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Business">
+        <h3>Proposal Writing & Pitch Decks</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Investor or partnership-ready pitch deck</p>
+          <p><strong>Duration:</strong> 3-5 days</p>
+          <p><strong>Pricing:</strong> $250+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Business">
+        <h3>Business Process Improvement</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Analysis of current processes with efficiency recommendations</p>
+          <p><strong>Duration:</strong> 1 week</p>
+          <p><strong>Pricing:</strong> $300+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <!-- Project & Operations -->
+      <div class="service-card" data-category="Operations">
+        <h3>Project Planning & Coordination</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Full project plan, timelines, and milestone tracking</p>
+          <p><strong>Duration:</strong> 1-2 weeks</p>
+          <p><strong>Pricing:</strong> $300+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Operations">
+        <h3>Workflow Optimization</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Streamlined operations to improve team productivity</p>
+          <p><strong>Duration:</strong> 1 week</p>
+          <p><strong>Pricing:</strong> $300+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Operations">
+        <h3>Operations Management</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> End-to-end support to manage day-to-day operations</p>
+          <p><strong>Duration:</strong> Variable</p>
+          <p><strong>Pricing:</strong> $400+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Operations">
+        <h3>Team Leadership & Mentorship</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Guidance for teams to improve performance & collaboration</p>
+          <p><strong>Duration:</strong> Ongoing / per month</p>
+          <p><strong>Pricing:</strong> $200+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Operations">
+        <h3>Remote Collaboration Tools Setup</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Setup & training for Slack, Teams, Zoom, Asana, Trello, Notion</p>
+          <p><strong>Duration:</strong> 2-3 days</p>
+          <p><strong>Pricing:</strong> $150+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Operations">
+        <h3>Event & Campaign Coordination</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Plan & execute events or campaigns from start to finish</p>
+          <p><strong>Duration:</strong> Variable</p>
+          <p><strong>Pricing:</strong> $400+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <!-- Media Expertise -->
+      <div class="service-card" data-category="Media">
+        <h3>Media Market Research</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Insights on market trends, audience behavior, and industry opportunities</p>
+          <p><strong>Duration:</strong> 1 week</p>
+          <p><strong>Pricing:</strong> $300+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Media">
+        <h3>Audience Growth Strategies</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Plan to grow and engage audiences across digital platforms</p>
+          <p><strong>Duration:</strong> 1-2 weeks</p>
+          <p><strong>Pricing:</strong> $300+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Media">
+        <h3>Streaming & Digital Content Platforms</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Strategy to optimize content performance on YouTube, Spotify, TikTok, and other platforms</p>
+          <p><strong>Duration:</strong> 1-2 weeks</p>
+          <p><strong>Pricing:</strong> $300+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Media">
+        <h3>Music & Entertainment Industry Insights</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Deep dive analysis of trends, monetization, and growth opportunities</p>
+          <p><strong>Duration:</strong> 1 week</p>
+          <p><strong>Pricing:</strong> $250+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Media">
+        <h3>Content Monetization Strategies</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Recommendations to maximize revenue from digital content</p>
+          <p><strong>Duration:</strong> 3-5 days</p>
+          <p><strong>Pricing:</strong> $200+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="Media">
+        <h3>Digital Creative Economy Analysis</h3>
+        <div class="details">
+          <p><strong>Outcome:</strong> Evaluation of digital creative market opportunities & trends</p>
+          <p><strong>Duration:</strong> 1 week</p>
+          <p><strong>Pricing:</strong> $300+</p>
+          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Expand / collapse service card details
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const details = card.querySelector('.details');
+        if(details.style.display === 'none') details.style.display = 'block';
+        else details.style.display = 'none';
+      });
+    });
+
+    // Filter categories
+    function filterCategory(cat){
+      const cards = document.querySelectorAll('.service-card');
+      cards.forEach(card => {
+        if(cat === 'All' || card.dataset.category === cat) card.style.display = 'block';
+        else card.style.display = 'none';
+      });
+    }
+
+    // Book consultation button
+    function bookConsultation(e){
+      e.stopPropagation(); // Prevent toggling card
+      window.location.href = 'mailto:tolu7711@gmail.com';
+    }
+  </script>
+
+  <!-- Spotify Script remains unchanged -->
   <script>
     const refresh_token = "YOUR_REFRESH_TOKEN_HERE";
 
