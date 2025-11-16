@@ -43,20 +43,24 @@
       100% { transform: translateY(-130vh) scale(1); opacity:0; }
     }
 
-    .card {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 700px;
-      background: rgba(255, 255, 255, 0.1);
+    /* Glass card style */
+    .card, .service-card {
+      background: rgba(255, 255, 255, 0.05); /* very transparent for glass effect */
       border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      padding: 3rem 2rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-radius: 20px;
+      padding: 2rem;
       text-align: center;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-      margin-bottom: 3rem;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .card:hover, .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
     h1 {
@@ -92,6 +96,7 @@
       margin: 0.5rem;
       min-width: 140px;
     }
+
     .btn:hover {
       background-color: var(--primary-hover);
       border-color: var(--primary-hover);
@@ -103,6 +108,7 @@
     #spotify {
       margin-top: 2rem;
     }
+
     #spotify img {
       border-radius: 12px;
       width: 110px;
@@ -111,11 +117,13 @@
       margin-bottom: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
+
     #spotify a {
       color: var(--primary);
       text-decoration: none;
       font-weight: 600;
     }
+
     #spotify a:hover { text-decoration: underline; }
 
     /* Services Section */
@@ -129,24 +137,6 @@
       display:grid;
       grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
       gap:1.5rem;
-    }
-
-    .service-card {
-      padding:1.5rem;
-      background: rgba(255,255,255,0.1);
-      border-radius:15px;
-      backdrop-filter:blur(6px);
-      cursor:pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    }
-
-    .service-card h3 {
-      margin-bottom:0.5rem;
     }
 
     .service-card .details {
@@ -163,10 +153,11 @@
 </head>
 
 <body>
+  <!-- Floating bubbles -->
   <script>
     const colors = [
-      "rgba(65,105,225,0.25)",  "rgba(100,149,237,0.25)", 
-      "rgba(70,130,180,0.25)",  "rgba(135,206,250,0.25)",
+      "rgba(65,105,225,0.25)", "rgba(100,149,237,0.25)", 
+      "rgba(70,130,180,0.25)", "rgba(135,206,250,0.25)",
       "rgba(173,216,230,0.25)","rgba(72,209,204,0.25)",
       "rgba(123,104,238,0.25)"
     ];
@@ -184,6 +175,7 @@
     }
   </script>
 
+  <!-- Main Card -->
   <div class="card">
     <h1>Toluwalope Kolawole</h1>
     <p class="tagline">Consulting for media, creative, and tech brands ready to level up their reputation, reach, and revenue.</p>
@@ -208,8 +200,7 @@
     </div>
 
     <div id="services-container">
-      <!-- 25+ Service cards go here exactly as in previous version -->
-      <!-- Example for one card -->
+      <!-- Example service card -->
       <div class="service-card" data-category="Business">
         <h3>Business Development</h3>
         <div class="details">
@@ -219,7 +210,7 @@
           <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
         </div>
       </div>
-      <!-- Add all other 24+ cards exactly like before -->
+      <!-- Add all 24+ services here following the same pattern -->
     </div>
   </section>
 
@@ -249,7 +240,7 @@
     }
   </script>
 
-  <!-- Spotify Script remains unchanged -->
+  <!-- Spotify Script -->
   <script>
     const refresh_token = "YOUR_REFRESH_TOKEN_HERE";
 
