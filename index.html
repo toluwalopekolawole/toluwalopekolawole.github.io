@@ -10,12 +10,11 @@
 
   <style>
     :root {
-      --primary: #1e40ff; /* royal blue */
+      --primary: #1e40ff;
       --primary-hover: #000dff;
-      --bg: #000000; /* black background */
+      --bg: #000000;
       --text: #ffffff;
       --muted: #a8adb5;
-      --accent: #e0e0e0;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,9 +32,6 @@
       padding: 1rem;
     }
 
-    /* ----------------------------------------------- */
-    /*                      BUBBLES                    */
-    /* ----------------------------------------------- */
     .bubble {
       position: absolute;
       border-radius: 50%;
@@ -51,26 +47,19 @@
       100% { transform: translateY(-120vh) scale(1); opacity: 0; }
     }
 
-    /* ----------------------------------------------- */
-    /*                 GLASS CARD (ENHANCED)          */
-    /* ----------------------------------------------- */
     .card {
       position: relative;
       z-index: 2;
       width: 100%;
       max-width: 600px;
-
       background: rgba(30, 64, 255, 0.08);
       backdrop-filter: blur(16px) saturate(140%);
       -webkit-backdrop-filter: blur(16px) saturate(140%);
-
       border-radius: 20px;
       padding: 2.8rem 2rem;
       text-align: center;
-
       border: 1px solid rgba(30, 64, 255, 0.25);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-      transition: all 0.4s ease;
     }
 
     h1 {
@@ -92,9 +81,6 @@
       letter-spacing: -0.01em;
     }
 
-    /* ----------------------------------------------- */
-    /*                   BUTTONS                       */
-    /* ----------------------------------------------- */
     .btn {
       font-family: "Space Grotesk", sans-serif;
       display: inline-block;
@@ -110,7 +96,6 @@
       margin: 0.6rem;
       min-width: 120px;
       letter-spacing: 0.3px;
-      text-transform: uppercase;
       cursor: pointer;
     }
 
@@ -125,75 +110,25 @@
       transform: translateY(-1px);
     }
 
-    /* Spotify */
     #spotify {
       margin-top: 2.5rem;
       padding-top: 2.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    #spotify p {
-      font-family: "Inter", sans-serif;
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-    }
-
-    #spotify img {
-      border-radius: 16px;
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      margin-bottom: 14px;
-      box-shadow: 0 8px 20px rgba(30, 64, 255, 0.25), 0 0 1px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    #spotify img:hover {
-      transform: scale(1.05) translateZ(0);
-      box-shadow: 0 12px 32px rgba(30, 64, 255, 0.4);
-    }
-
-    #spotify div {
-      font-family: "Inter", sans-serif;
-    }
-
-    #spotify strong {
-      display: block;
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      color: var(--text);
-    }
-
-    #spotify em {
-      display: block;
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 0.8rem;
-      font-style: normal;
-    }
-
     #spotify a {
-      font-family: "Space Grotesk", sans-serif;
-      color: var(--primary);
+      font-family: "Inter", sans-serif;
+      color: var(--muted);
       text-decoration: none;
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.3px;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      display: inline-block;
     }
 
     #spotify a:hover {
-      color: var(--primary-hover);
-      text-decoration: underline;
-      text-underline-offset: 4px;
+      color: var(--primary);
     }
 
-    /* ----------------------------------------------- */
-    /*                MOBILE FIXES                     */
-    /* ----------------------------------------------- */
     @media (max-width: 480px) {
       .card {
         padding: 2rem 1.3rem;
@@ -225,18 +160,8 @@
         padding-top: 1.5rem;
       }
 
-      #spotify img {
-        width: 90px;
-        height: 90px;
-        margin-bottom: 10px;
-      }
-
-      #spotify strong {
-        font-size: 0.95rem;
-      }
-
-      #spotify em {
-        font-size: 0.8rem;
+      #spotify a {
+        font-size: 0.85rem;
       }
     }
 
@@ -266,7 +191,6 @@
 
 <body>
 
-<!-- BUBBLES -->
 <script>
   for (let i = 0; i < 40; i++) {
     const bubble = document.createElement('div');
@@ -283,51 +207,14 @@
   <h1>Toluwalope Kolawole</h1>
   <p class="tagline">Consulting for media, creative, and tech brands ready to level up their reputation, reach, and revenue.</p>
 
-  <a class="btn" href="resume.pdf" target="_blank">📄 Resume</a>
-  <a class="btn" href="mailto:tolu7711@gmail.com">✉️ Email</a>
-  <a class="btn" href="https://linktr.ee/toluwalopekolawole" target="_blank">🌐 More</a>
+  <a class="btn" href="resume.pdf" target="_blank">📄 resume</a>
+  <a class="btn" href="https://claude.ai/public/artifacts/0ef53599-9b11-4922-bf12-d2afcb8a296a" target="_blank">🌐 services</a>
+  <a class="btn" href="https://linktr.ee/toluwalopekolawole" target="_blank">💬 chat</a>
 
   <div id="spotify">
-    <p>🎧 Loading your recently played track...</p>
+    <a href="https://www.linkedin.com/in/toluwalope1/" target="_blank">🌿 let's connect on LinkedIn</a>
   </div>
 </div>
-
-
-<script>
-  const refresh_token = "YOUR_REFRESH_TOKEN_HERE";
-
-  async function getRecentlyPlayed() {
-    try {
-      const tokenResponse = await fetch(`https://spotify-refresh-token-generator.vercel.app/api/refresh_token?refresh_token=${refresh_token}`);
-      const tokenData = await tokenResponse.json();
-      const access_token = tokenData.access_token;
-
-      const response = await fetch("https://api.spotify.com/v1/me/player/recently-played?limit=1", {
-        headers: { Authorization: "Bearer " + access_token },
-      });
-
-      const data = await response.json();
-
-      if (data.items && data.items.length > 0) {
-        const track = data.items[0].track;
-        document.getElementById("spotify").innerHTML = `
-          <div>
-            <img src="${track.album.images[0].url}" alt="Album Art" />
-            <div><strong>${track.name}</strong></div>
-            <div><em>${track.artists.map(a => a.name).join(", ")}</em></div>
-            <div><a href="${track.external_urls.spotify}" target="_blank">Open in Spotify</a></div>
-          </div>
-        `;
-      } else {
-        document.getElementById("spotify").innerText = "No recent songs found.";
-      }
-    } catch (err) {
-      document.getElementById("spotify").innerText = "Error loading Spotify data.";
-    }
-  }
-
-  getRecentlyPlayed();
-</script>
 
 </body>
 </html>
