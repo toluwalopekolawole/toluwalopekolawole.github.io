@@ -6,16 +6,19 @@
   <title>Toluwalope Kolawole — Consulting for Media, Creative & Tech Brands</title>
   <meta name="description" content="Consulting for media, creative, and tech brands ready to level up their reputation, reach, and revenue." />
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --primary: #1e40ff; /* royal blue */
-      --primary-hover: #000000;
+      --primary-hover: #000dff;
       --bg: #000000; /* black background */
       --text: #ffffff;
-      --muted: #cccccc;
+      --muted: #a8adb5;
+      --accent: #e0e0e0;
     }
 
-    * { box-sizing: border-box; margin:0; padding:0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -36,20 +39,20 @@
     .bubble {
       position: absolute;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(30,64,255,0.35), rgba(30,64,255,0));
+      background: radial-gradient(circle, rgba(30, 64, 255, 0.3), rgba(30, 64, 255, 0));
       animation: float 10s linear infinite;
-      opacity: 0.8;
+      opacity: 0.6;
       bottom: -60px;
     }
 
     @keyframes float {
-      0% { transform: translateY(0) scale(0.5); opacity:0.8; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-120vh) scale(1); opacity:0; }
+      0% { transform: translateY(0) scale(0.5); opacity: 0.6; }
+      50% { opacity: 0.8; }
+      100% { transform: translateY(-120vh) scale(1); opacity: 0; }
     }
 
     /* ----------------------------------------------- */
-    /*                 GLASS CARD (FIXED)              */
+    /*                 GLASS CARD (ENHANCED)          */
     /* ----------------------------------------------- */
     .card {
       position: relative;
@@ -57,102 +60,205 @@
       width: 100%;
       max-width: 700px;
 
-      /* TRUE CRYSTAL GLASS — NO WHITE HAZE */
-      background: rgba(255, 255, 255, 0.10);
-      backdrop-filter: blur(18px) saturate(180%);
-      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(20px) saturate(190%);
+      -webkit-backdrop-filter: blur(20px) saturate(190%);
 
-      border-radius: 20px;
-      padding: 3rem 2rem;
+      border-radius: 24px;
+      padding: 3.5rem 2.5rem;
       text-align: center;
 
-      /* Clean, soft edge — prevents iOS white glow */
-      border: 1px solid rgba(255, 255, 255, 0.18);
-
-      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
     }
 
     h1 {
-      font-size: clamp(2rem, 5vw, 2.6rem);
+      font-family: "Inter", sans-serif;
+      font-size: clamp(2.2rem, 6vw, 3rem);
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
     }
 
     .tagline {
-      font-size: clamp(1rem, 3vw, 1.2rem);
+      font-family: "Inter", sans-serif;
+      font-size: clamp(1.05rem, 3.2vw, 1.25rem);
       color: var(--muted);
-      margin-bottom: 2.5rem;
-      line-height: 1.6;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+      font-weight: 500;
+      letter-spacing: -0.01em;
     }
 
     /* ----------------------------------------------- */
     /*                   BUTTONS                       */
     /* ----------------------------------------------- */
     .btn {
+      font-family: "Space Grotesk", sans-serif;
       display: inline-block;
-      padding: 0.8rem 2rem;
-      border-radius: 50px;
+      padding: 0.9rem 2.2rem;
+      border-radius: 12px;
       background-color: var(--primary);
-      color: #fff;
-      font-weight: 600;
+      color: #000;
+      font-weight: 700;
       text-decoration: none;
       border: 2px solid var(--primary);
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       font-size: 0.95rem;
-      margin: 0.5rem;
+      margin: 0.6rem;
       min-width: 120px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      cursor: pointer;
     }
+
     .btn:hover {
       background-color: var(--primary-hover);
       border-color: var(--primary-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(30, 64, 255, 0.35);
+    }
+
+    .btn:active {
+      transform: translateY(-1px);
     }
 
     /* Spotify */
     #spotify {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
+
+    #spotify p {
+      font-family: "Inter", sans-serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
     #spotify img {
-      border-radius: 12px;
-      width: 110px;
-      height: 110px;
+      border-radius: 16px;
+      width: 120px;
+      height: 120px;
       object-fit: cover;
-      margin-bottom: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      margin-bottom: 14px;
+      box-shadow: 0 8px 20px rgba(30, 64, 255, 0.25), 0 0 1px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
+    #spotify img:hover {
+      transform: scale(1.05) translateZ(0);
+      box-shadow: 0 12px 32px rgba(30, 64, 255, 0.4);
+    }
+
+    #spotify div {
+      font-family: "Inter", sans-serif;
+    }
+
+    #spotify strong {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    #spotify em {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+      font-style: normal;
+    }
+
     #spotify a {
+      font-family: "Space Grotesk", sans-serif;
       color: var(--primary);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
     }
-    #spotify a:hover { text-decoration: underline; }
+
+    #spotify a:hover {
+      color: var(--primary-hover);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
 
     /* ----------------------------------------------- */
-    /*                MOBILE FIXES (B2)                */
+    /*                MOBILE FIXES                     */
     /* ----------------------------------------------- */
     @media (max-width: 480px) {
       .card {
-        padding: 2.2rem 1.4rem;
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(14px) saturate(160%);
-        -webkit-backdrop-filter: blur(14px) saturate(160%);
+        padding: 2.5rem 1.5rem;
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(16px) saturate(170%);
+        -webkit-backdrop-filter: blur(16px) saturate(170%);
+        border-radius: 20px;
       }
 
       h1 {
-        margin-bottom: 1.4rem;
+        margin-bottom: 1.2rem;
       }
 
       .tagline {
-        margin-bottom: 2.2rem;
+        margin-bottom: 2.5rem;
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 0.75rem 1.4rem;
+        font-size: 0.85rem;
+        width: 90%;
+        margin: 0.7rem auto;
+        display: block;
+      }
+
+      #spotify {
+        margin-top: 2rem;
+        padding-top: 2rem;
+      }
+
+      #spotify img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 12px;
+      }
+
+      #spotify strong {
+        font-size: 1rem;
+      }
+
+      #spotify em {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .card {
+        padding: 2rem 1.2rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .tagline {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
       }
 
       .btn {
         padding: 0.65rem 1.2rem;
-        font-size: 0.8rem;
-        width: 80%;
-        margin: 0.8rem auto;  /* More spacing (B2) */
-        display: block;
+        font-size: 0.75rem;
+        margin: 0.5rem auto;
       }
     }
   </style>
