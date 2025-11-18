@@ -68,19 +68,19 @@
     h1 {
       font-size: clamp(2rem, 5vw, 2.6rem);
       font-weight: 700;
-      margin-bottom: 0.6rem;
+      margin-bottom: 1rem; /* MORE SPACE on top hierarchy */
     }
 
     .tagline {
       font-size: clamp(1rem, 3vw, 1.2rem);
       color: var(--muted);
-      margin-bottom: 2rem;
+      margin-bottom: 2.4rem; /* Increase spacing for clarity */
       line-height: 1.6;
     }
 
     .btn {
       display: inline-block;
-      padding: 0.8rem 2rem;
+      padding: 0.75rem 1.8rem; /* slightly smaller */
       border-radius: 50px;
       background-color: var(--primary);
       color: #fff;
@@ -88,9 +88,9 @@
       text-decoration: none;
       border: 2px solid var(--primary);
       transition: all 0.3s ease;
-      font-size: 0.95rem;
-      margin: 0.5rem;
-      min-width: 120px;
+      font-size: 0.9rem;
+      margin: 0.4rem;
+      min-width: 115px;
     }
     .btn:hover {
       background-color: var(--primary-hover);
@@ -117,29 +117,54 @@
     }
     #spotify a:hover { color: #fff; }
 
-    @media (max-width:480px){
-      .btn { width: 100%; margin: 0.5rem 0; }
+    /* --------------------------- */
+    /* MOBILE RESPONSIVE TWEAKS   */
+    /* --------------------------- */
+    @media (max-width: 480px) {
+      .card {
+        padding: 2.4rem 1.6rem;
+      }
+
+      h1 {
+        margin-top: 0.4rem;
+        margin-bottom: 1.4rem; /* more space before tagline */
+      }
+
+      .tagline {
+        margin-bottom: 2.6rem; /* more whitespace */
+        font-size: 1rem;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 0.65rem 1.2rem; /* smaller buttons for mobile */
+        margin: 0.35rem 0;
+        font-size: 0.85rem;
+      }
     }
   </style>
 </head>
 
 <body>
   <script>
-    for (let i=0;i<38;i++){
+    for (let i = 0; i < 38; i++) {
       const bubble = document.createElement('div');
       bubble.classList.add('bubble');
-      const size = Math.random()*50 + 25;
+      const size = Math.random() * 50 + 25;
       bubble.style.width = bubble.style.height = size + 'px';
-      bubble.style.left = Math.random()*100 + 'vw';
-      bubble.style.animationDuration = (Math.random()*8 + 8) + 's';
-      bubble.style.animationDelay = (Math.random()*5) + 's';
+      bubble.style.left = Math.random() * 100 + 'vw';
+      bubble.style.animationDuration = (Math.random() * 8 + 8) + 's';
+      bubble.style.animationDelay = (Math.random() * 5) + 's';
       document.body.appendChild(bubble);
     }
   </script>
 
   <div class="card">
     <h1>Toluwalope Kolawole</h1>
-    <p class="tagline">Consulting for media, creative, and tech brands ready to level up their reputation, reach, and revenue.</p>
+
+    <p class="tagline">
+      Consulting for media, creative, and tech brands ready to level up their reputation, reach, and revenue.
+    </p>
 
     <a class="btn" href="resume.pdf" target="_blank">📄 Resume</a>
     <a class="btn" href="mailto:tolu7711@gmail.com">✉️ Email</a>
@@ -185,5 +210,6 @@
 
     getRecentlyPlayed();
   </script>
+
 </body>
 </html>
