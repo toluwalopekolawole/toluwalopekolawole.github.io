@@ -8,23 +8,25 @@
 
   <style>
     :root {
-      --primary: #4169e1; /* royal blue buttons */
-      --primary-hover: #ffffff; /* hover text on dark */
-      --bg: #111111; /* dark background */
-      --text: #ffffff; /* main text */
-      --muted: #cccccc; /* tagline, details */
+      --primary: #1d4ed8; /* royal blue */
+      --primary-hover: #000000;
+      --bg1: #000000;
+      --bg2: #0a0f24;
+      --text: #ffffff;
+      --muted: #b3b3b3;
     }
 
     * { box-sizing: border-box; margin:0; padding:0; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-      background-color: var(--bg);
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
       color: var(--text);
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
       min-height: 100vh;
+      overflow: hidden;
       position: relative;
       padding: 1rem;
     }
@@ -32,47 +34,41 @@
     .bubble {
       position: absolute;
       border-radius: 50%;
-      opacity: 0.6;
-      bottom: -60px;
+      background: radial-gradient(circle, rgba(29,78,216,0.6) 0%, rgba(255,255,255,0.15) 70%);
       animation: float 10s linear infinite;
+      opacity: 0.9;
+      bottom: -80px;
+      filter: blur(1px);
     }
 
     @keyframes float {
-      0% { transform: translateY(0) scale(0.5); opacity:0.7; }
+      0% { transform: translateY(0) scale(0.4); opacity: 0.9; }
       50% { opacity: 1; }
-      100% { transform: translateY(-130vh) scale(1); opacity:0; }
+      100% { transform: translateY(-140vh) scale(1); opacity:0; }
     }
 
-    /* Glass card style */
-    .card, .service-card {
-      background: rgba(255, 255, 255, 0.05); /* very transparent for glass effect */
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 2rem;
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 700px;
+
+      /* TRUE CLEAR GLASS */
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+
+      padding: 3rem 2rem;
+      border-radius: 24px;
       text-align: center;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-      color: var(--text);
-    }
-
-    .card:hover, .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45);
     }
 
     h1 {
       font-size: clamp(2rem, 5vw, 2.6rem);
       font-weight: 700;
       margin-bottom: 0.6rem;
-    }
-
-    h2 {
-      font-size: clamp(1.6rem, 4vw, 2rem);
-      margin-bottom: 1.5rem;
-      text-align:center;
     }
 
     .tagline {
@@ -94,57 +90,32 @@
       transition: all 0.3s ease;
       font-size: 0.95rem;
       margin: 0.5rem;
-      min-width: 140px;
+      min-width: 120px;
     }
-
     .btn:hover {
       background-color: var(--primary-hover);
       border-color: var(--primary-hover);
-      color: var(--bg);
       transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.4);
     }
 
     #spotify {
       margin-top: 2rem;
     }
-
     #spotify img {
-      border-radius: 12px;
-      width: 110px;
-      height: 110px;
+      border-radius: 14px;
+      width: 120px;
+      height: 120px;
       object-fit: cover;
       margin-bottom: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
-
     #spotify a {
       color: var(--primary);
       text-decoration: none;
       font-weight: 600;
     }
-
-    #spotify a:hover { text-decoration: underline; }
-
-    /* Services Section */
-    #services {
-      width: 100%;
-      max-width: 1100px;
-      padding: 2rem 1rem 4rem;
-    }
-
-    #services-container {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-      gap:1.5rem;
-    }
-
-    .service-card .details {
-      display:none;
-      margin-top:1rem;
-      font-size:0.9rem;
-      color: var(--muted);
-    }
+    #spotify a:hover { color: #fff; }
 
     @media (max-width:480px){
       .btn { width: 100%; margin: 0.5rem 0; }
@@ -153,94 +124,32 @@
 </head>
 
 <body>
-  <!-- Floating bubbles -->
   <script>
-    const colors = [
-      "rgba(65,105,225,0.25)", "rgba(100,149,237,0.25)", 
-      "rgba(70,130,180,0.25)", "rgba(135,206,250,0.25)",
-      "rgba(173,216,230,0.25)","rgba(72,209,204,0.25)",
-      "rgba(123,104,238,0.25)"
-    ];
-
-    for (let i = 0; i < 70; i++) {
+    for (let i=0;i<38;i++){
       const bubble = document.createElement('div');
       bubble.classList.add('bubble');
-      const size = Math.random() * 50 + 15;
+      const size = Math.random()*50 + 25;
       bubble.style.width = bubble.style.height = size + 'px';
-      bubble.style.left = Math.random() * 100 + 'vw';
-      bubble.style.background = `radial-gradient(circle at 30% 30%, ${colors[Math.floor(Math.random() * colors.length)]}, rgba(255,255,255,0.05))`;
-      bubble.style.animationDuration = (Math.random() * 5 + 3) + 's';
-      bubble.style.animationDelay = Math.random() * 3 + 's';
+      bubble.style.left = Math.random()*100 + 'vw';
+      bubble.style.animationDuration = (Math.random()*8 + 8) + 's';
+      bubble.style.animationDelay = (Math.random()*5) + 's';
       document.body.appendChild(bubble);
     }
   </script>
 
-  <!-- Main Card -->
   <div class="card">
     <h1>Toluwalope Kolawole</h1>
     <p class="tagline">Consulting for media, creative, and tech brands ready to level up their reputation, reach, and revenue.</p>
 
-    <a class="btn" href="resume.pdf" target="_blank" rel="noopener noreferrer">📄 Resume</a>
-    <a class="btn" href="mailto:tolu7711@gmail.com" rel="noopener noreferrer">✉️ Email</a>
-    <a class="btn" href="#services">🌐 View My Services</a>
+    <a class="btn" href="resume.pdf" target="_blank">📄 Resume</a>
+    <a class="btn" href="mailto:tolu7711@gmail.com">✉️ Email</a>
+    <a class="btn" href="https://linktr.ee/toluwalopekolawole" target="_blank">🌐 More</a>
 
     <div id="spotify">
       <p>🎧 Loading your recently played track...</p>
     </div>
   </div>
 
-  <!-- Services Section -->
-  <section id="services">
-    <h2>Services</h2>
-    <div style="text-align:center; margin-bottom:2rem;">
-      <button class="btn" onclick="filterCategory('Business')">Business & Strategy</button>
-      <button class="btn" onclick="filterCategory('Operations')">Project & Operations</button>
-      <button class="btn" onclick="filterCategory('Media')">Media Expertise</button>
-      <button class="btn" onclick="filterCategory('All')">Show All</button>
-    </div>
-
-    <div id="services-container">
-      <!-- Example service card -->
-      <div class="service-card" data-category="Business">
-        <h3>Business Development</h3>
-        <div class="details">
-          <p><strong>Outcome:</strong> Tailored strategy to grow partnerships and revenue</p>
-          <p><strong>Duration:</strong> 1-2 weeks</p>
-          <p><strong>Pricing:</strong> $500+</p>
-          <button class="btn" onclick="bookConsultation(event)">Book a Consultation</button>
-        </div>
-      </div>
-      <!-- Add all 24+ services here following the same pattern -->
-    </div>
-  </section>
-
-  <script>
-    // Expand / collapse service card details
-    document.querySelectorAll('.service-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const details = card.querySelector('.details');
-        if(details.style.display === 'none') details.style.display = 'block';
-        else details.style.display = 'none';
-      });
-    });
-
-    // Filter categories
-    function filterCategory(cat){
-      const cards = document.querySelectorAll('.service-card');
-      cards.forEach(card => {
-        if(cat === 'All' || card.dataset.category === cat) card.style.display = 'block';
-        else card.style.display = 'none';
-      });
-    }
-
-    // Book consultation button
-    function bookConsultation(e){
-      e.stopPropagation(); // Prevent toggling card
-      window.location.href = 'mailto:tolu7711@gmail.com';
-    }
-  </script>
-
-  <!-- Spotify Script -->
   <script>
     const refresh_token = "YOUR_REFRESH_TOKEN_HERE";
 
@@ -267,15 +176,10 @@
             </div>
           `;
         } else {
-          document.getElementById("spotify").innerHTML = `
-            <p>⚡ Let's connect on <a href="https://www.linkedin.com/in/toluwalope1" target="_blank" rel="noopener noreferrer">LinkedIn</a>!</p>
-          `;
+          document.getElementById("spotify").innerText = "No recent songs found.";
         }
       } catch (err) {
-        console.error(err);
-        document.getElementById("spotify").innerHTML = `
-          <p>⚡ Let's connect on <a href="https://www.linkedin.com/in/toluwalope1" target="_blank" rel="noopener noreferrer">LinkedIn</a>!</p>
-        `;
+        document.getElementById("spotify").innerText = "Error loading Spotify data.";
       }
     }
 
