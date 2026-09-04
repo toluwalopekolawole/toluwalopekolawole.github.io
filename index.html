@@ -1,220 +1,971 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Toluwalope Kolawole — Consulting for Media, Creative & Tech Brands</title>
-  <meta name="description" content="Consulting for media, creative, and tech brands ready to level up their reputation, reach, and revenue." />
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tolú</title>
+  <meta name="description" content="Tolú. Creative operator, strategist and dealmaker working across attention, distribution, platforms, partnerships, events and audience growth.">
+  <meta name="theme-color" content="#f7f7f4">
 
   <style>
-    :root {
-      --primary: #1e40ff;
-      --primary-hover: #000dff;
-      --bg: #000000;
-      --text: #ffffff;
-      --muted: #a8adb5;
+    :root{
+      --bg:#f7f7f4;
+      --text:#232321;
+      --muted:#797972;
+      --line:#e3e3df;
+      --link-bg:#e9e9e6;
+      --link-hover:#deded9;
+      --focus-shadow:0 0 0 18px var(--bg);
+      --max:560px;
+      --twitter:#1DA1F2;
+      --dark:#1f1f1d;
+      --dark-muted:#4e4e49;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      overflow: hidden;
-      position: relative;
-      padding: 1rem;
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      transition:background .22s ease, color .22s ease;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:15px;
+      line-height:1.58;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
 
-    .bubble {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(30, 64, 255, 0.5), rgba(30, 64, 255, 0));
-      animation: float 10s linear infinite;
-      opacity: 0.75;
-      bottom: -60px;
+    .site-shell{
+      width:min(calc(100% - 36px), var(--max));
+      margin:0 auto;
+      padding:29px 0 54px;
     }
 
-    @keyframes float {
-      0% { transform: translateY(0) scale(0.5); opacity: 0.75; }
-      50% { opacity: 0.95; }
-      100% { transform: translateY(-120vh) scale(1); opacity: 0; }
+    h1,h2,p{margin-top:0}
+
+    h1{
+      margin-bottom:3px;
+      font-size:16px;
+      line-height:1.3;
+      font-weight:500;
     }
 
-    .card {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 600px;
-      background: rgba(30, 64, 255, 0.08);
-      backdrop-filter: blur(16px) saturate(140%);
-      -webkit-backdrop-filter: blur(16px) saturate(140%);
-      border-radius: 20px;
-      padding: 2.8rem 2rem;
-      text-align: center;
-      border: 1px solid rgba(30, 64, 255, 0.25);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    .updated{
+      margin-bottom:27px;
+      color:var(--muted);
+      font-size:13px;
     }
 
-    h1 {
-      font-family: "Inter", sans-serif;
-      font-size: clamp(2.2rem, 6vw, 3rem);
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
+    p{
+      margin-bottom:18px;
     }
 
-    .tagline {
-      font-family: "Inter", sans-serif;
-      font-size: clamp(1.05rem, 3.2vw, 1.25rem);
-      color: var(--muted);
-      margin-bottom: 3rem;
-      line-height: 1.7;
-      font-weight: 500;
-      letter-spacing: -0.01em;
+    strong{
+      font-weight:600;
     }
 
-    .btn {
-      font-family: "Space Grotesk", sans-serif;
-      display: inline-block;
-      padding: 0.9rem 2.2rem;
-      border-radius: 12px;
-      background-color: var(--primary);
-      color: #000;
-      font-weight: 700;
-      text-decoration: none;
-      border: 2px solid var(--primary);
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      font-size: 0.95rem;
-      margin: 0.6rem;
-      min-width: 120px;
-      letter-spacing: 0.3px;
-      cursor: pointer;
+    a{
+      color:#2b2b28;
+      background:none;
+      text-decoration:underline;
+      text-decoration-thickness:1px;
+      text-underline-offset:3px;
+      text-decoration-color:rgba(43,43,40,.14);
+      padding:0;
+      transition:color .15s ease, text-decoration-color .15s ease, opacity .15s ease;
     }
 
-    .btn:hover {
-      background-color: var(--primary-hover);
-      border-color: var(--primary-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgba(30, 64, 255, 0.35);
+    a:hover,
+    a:focus-visible{
+      color:#000;
+      text-decoration-color:rgba(43,43,40,.46);
+      outline:none;
     }
 
-    .btn:active {
-      transform: translateY(-1px);
+    .intro{
+      margin-bottom:26px;
     }
 
-    #spotify {
-      margin-top: 2.5rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    .bio{
+      margin-bottom:38px;
     }
 
-    #spotify a {
-      font-family: "Inter", sans-serif;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
-      display: inline-block;
+    .build-heading{
+      margin:0;
+      padding-bottom:8px;
+      border-bottom:1px solid var(--line);
+      font-size:15px;
+      line-height:1.35;
+      font-weight:400;
     }
 
-    #spotify a:hover {
-      color: var(--primary);
+    .build-list{
+      position:relative;
     }
 
-    @media (max-width: 480px) {
-      .card {
-        padding: 2rem 1.3rem;
-        background: rgba(30, 64, 255, 0.08);
-        backdrop-filter: blur(14px) saturate(130%);
-        -webkit-backdrop-filter: blur(14px) saturate(130%);
-        border-radius: 18px;
+    .project-row{
+      position:relative;
+      display:grid;
+      grid-template-columns:90px minmax(0,1fr) auto;
+      gap:18px;
+      padding:12px 0;
+      border-bottom:1px solid var(--line);
+      transition:opacity .18s ease, filter .18s ease;
+    }
+
+    .project-row.active{
+      z-index:40;
+      background:transparent;
+      color:#ffffff;
+      box-shadow:none;
+    }
+
+    .project-row.active .project-desc,
+    .project-row.active .project-copy,
+    .project-row.active .status,
+    .project-row.active .project-name,
+    .project-row.active .toggle,
+    .project-row.active strong,
+    .project-row.active a{
+      color:#ffffff;
+    }
+
+    .project-row.active .toggle{
+      border-color:#ffffff;
+    }
+
+    .project-row.active a{
+      text-decoration-color:rgba(255,255,255,.55);
+    }
+
+    .project-row.active a:hover,
+    .project-row.active a:focus-visible{
+      color:#ffffff;
+      text-decoration-color:#ffffff;
+    }
+
+    .project-row.active .toggle{
+      border-color:#2a2a27;
+    }
+
+    .year{
+      font-size:14px;
+      line-height:1.55;
+    }
+
+    .project-main{
+      min-width:0;
+    }
+
+    .project-line{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      min-height:22px;
+    }
+
+    .project-name{
+      display:inline;
+      font-size:15px;
+      font-weight:400;
+    }
+
+    .project-name.plain{
+      background:none;
+      padding:0;
+    }
+
+    .toggle{
+      flex:0 0 auto;
+      width:22px;
+      height:22px;
+      border:1px solid #77776f;
+      border-radius:50%;
+      background:transparent;
+      padding:0;
+      position:relative;
+      cursor:pointer;
+      color:inherit;
+    }
+
+    /* short inner strokes so the + / − never touches the circle */
+    .toggle::before,
+    .toggle::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:8px;
+      height:1px;
+      background:currentColor;
+      transform:translate(-50%,-50%);
+      border-radius:1px;
+    }
+
+    .toggle::after{
+      transform:translate(-50%,-50%) rotate(90deg);
+      transition:opacity .14s ease, transform .14s ease;
+    }
+
+    .toggle[aria-expanded="true"]::after{
+      opacity:0;
+      transform:translate(-50%,-50%) rotate(90deg) scaleX(.4);
+    }
+
+    .toggle:hover{
+      border-color:#33332f;
+    }
+
+    .toggle:focus-visible{
+      outline:2px solid #8d8d86;
+      outline-offset:3px;
+    }
+
+    .project-desc{
+      display:grid;
+      grid-template-rows:0fr;
+      opacity:0;
+      transition:grid-template-rows .24s ease, opacity .18s ease, margin-top .24s ease;
+      margin-top:0;
+    }
+
+    .project-desc-inner{
+      overflow:hidden;
+    }
+
+    .project-row.active .project-desc{
+      grid-template-rows:1fr;
+      opacity:1;
+      margin-top:9px;
+    }
+
+    .project-copy{
+      margin:0;
+      max-width:390px;
+      font-size:14px;
+      line-height:1.55;
+    }
+
+    .status{
+      white-space:nowrap;
+      font-size:14px;
+      line-height:1.55;
+      text-align:right;
+    }
+
+    .loading{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+
+
+    .new-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:38px;
+      height:38px;
+      margin-left:2px;
+      background:var(--twitter);
+      color:#fff;
+      font-size:8px;
+      line-height:1;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      clip-path:polygon(
+        50% 0%,
+        60% 7%,
+        72% 4%,
+        80% 14%,
+        92% 16%,
+        94% 29%,
+        100% 39%,
+        94% 50%,
+        100% 61%,
+        94% 72%,
+        91% 84%,
+        79% 86%,
+        71% 96%,
+        59% 92%,
+        50% 100%,
+        40% 93%,
+        28% 96%,
+        20% 86%,
+        8% 84%,
+        6% 71%,
+        0% 61%,
+        6% 50%,
+        0% 39%,
+        6% 29%,
+        9% 16%,
+        21% 14%,
+        29% 4%,
+        41% 7%
+      );
+      transform-origin:center;
+      animation:breathe-new 2.2s ease-in-out infinite;
+      transition:opacity .18s ease, transform .18s ease;
+      flex:0 0 auto;
+    }
+
+    @keyframes breathe-new{
+      0%,100%{ transform:scale(1); }
+      50%{ transform:scale(1.11); }
+    }
+
+    .project-row.active .new-badge{
+      opacity:0;
+      transform:scale(.72);
+      pointer-events:none;
+    }
+
+    .spinner{
+      width:10px;
+      height:10px;
+      border:1px solid #8d8d86;
+      border-top-color:transparent;
+      border-radius:50%;
+      animation:spin 1.3s linear infinite;
+    }
+
+    @keyframes spin{
+      to{transform:rotate(360deg)}
+    }
+
+    .scrim{
+      position:fixed;
+      inset:0;
+      z-index:30;
+      border:0;
+      padding:0;
+      margin:0;
+      background:transparent;
+      opacity:0;
+      pointer-events:none;
+    }
+
+    body.project-open .scrim{
+      pointer-events:auto;
+    }
+
+    body.project-open{
+      background:var(--dark);
+      color:var(--dark-muted);
+    }
+
+    body.project-open .site-shell{
+      color:var(--dark-muted);
+    }
+
+    body.project-open .intro,
+    body.project-open .bio,
+    body.project-open .build-heading,
+    body.project-open .project-row:not(.active),
+    body.project-open footer{
+      color:var(--dark-muted);
+    }
+
+    body.project-open a{
+      background:none;
+      color:inherit;
+      text-decoration-color:rgba(116,116,110,.28);
+    }
+
+    body.project-open a:hover,
+    body.project-open a:focus-visible{
+      color:#71716b;
+      text-decoration-color:rgba(113,113,107,.72);
+    }
+
+    body.project-open .build-heading,
+    body.project-open .project-row{
+      border-color:transparent;
+    }
+
+    body.project-open .project-row.active,
+    body.project-open .project-row.active .project-desc,
+    body.project-open .project-row.active .project-copy,
+    body.project-open .project-row.active .status,
+    body.project-open .project-row.active .project-name,
+    body.project-open .project-row.active .toggle,
+    body.project-open .project-row.active strong,
+    body.project-open .project-row.active a{
+      color:#ffffff;
+    }
+
+    body.project-open .project-row.active .toggle{
+      border-color:#ffffff;
+    }
+
+    body.project-open .project-row.active a{
+      text-decoration-color:rgba(255,255,255,.55);
+    }
+
+    footer{
+      margin-top:42px;
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .footer-presence{
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      white-space:nowrap;
+    }
+
+    .condition-icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:14px;
+      height:14px;
+      color:inherit;
+      opacity:.9;
+      position:relative;
+    }
+
+    .condition-icon::after{
+      content:"·";
+      margin-left:6px;
+      position:relative;
+      left:6px;
+    }
+
+    .condition-svg{
+      width:14px;
+      height:14px;
+      overflow:visible;
+    }
+
+    .condition-part{
+      display:none;
+    }
+
+    .condition-icon[data-state="day"] .condition-day,
+    .condition-icon[data-state="night"] .condition-night,
+    .condition-icon[data-state="rain"] .condition-rain{
+      display:block;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    .lagos-time{
+      white-space:nowrap;
+      font-variant-numeric:tabular-nums;
+      letter-spacing:.01em;
+    }
+
+    .owl-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:34px;
+      height:28px;
+      margin-left:1px;
+      color:currentColor;
+      opacity:.94;
+      position:relative;
+    }
+
+    .owl-svg{
+      width:34px;
+      height:28px;
+      overflow:visible;
+    }
+
+    .owl-stroke{
+      fill:none;
+      stroke:currentColor;
+      stroke-width:1.55;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      vector-effect:non-scaling-stroke;
+    }
+
+    .owl-fill{
+      fill:currentColor;
+    }
+
+    .owl-state{
+      opacity:0;
+      transform-origin:22px 16px;
+      pointer-events:none;
+    }
+
+    .owl-badge[data-state="day"] .owl-day,
+    .owl-badge[data-state="night"] .owl-night,
+    .owl-badge[data-state="rain"] .owl-rain{
+      opacity:1;
+    }
+
+    .owl-day{
+      animation:owl-snooze 3.4s ease-in-out infinite;
+    }
+
+    .owl-night{
+      animation:owl-alert 2.1s ease-in-out infinite;
+    }
+
+    .owl-rain{
+      animation:owl-rain-bob 2.4s ease-in-out infinite;
+    }
+
+    .sleep-z{
+      animation:drift-sleep 2.8s ease-in-out infinite;
+      transform-origin:center;
+    }
+
+    .sleep-z.two{
+      animation-delay:.65s;
+    }
+
+    .night-pupil{
+      animation:owl-scan 3.2s ease-in-out infinite;
+      transform-origin:center;
+    }
+
+    .rain-drop{
+      animation:rain-fall 1.15s linear infinite;
+    }
+
+    .rain-drop.two{ animation-delay:.25s; }
+    .rain-drop.three{ animation-delay:.55s; }
+
+    @keyframes owl-snooze{
+      0%,100%{ transform:translateY(0) rotate(0deg); }
+      50%{ transform:translateY(.7px) rotate(-1deg); }
+    }
+
+    @keyframes owl-alert{
+      0%,100%{ transform:translateY(0) rotate(0deg); }
+      40%{ transform:translateY(-1.2px) rotate(.7deg); }
+      70%{ transform:translateY(-.4px) rotate(-.5deg); }
+    }
+
+    @keyframes owl-rain-bob{
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(.8px); }
+    }
+
+    @keyframes drift-sleep{
+      0%{ transform:translate(0,1px); opacity:0; }
+      22%{ opacity:.45; }
+      60%{ opacity:.9; }
+      100%{ transform:translate(1px,-5px); opacity:0; }
+    }
+
+    @keyframes owl-scan{
+      0%,100%{ transform:translateX(0); }
+      25%{ transform:translateX(-.7px); }
+      58%{ transform:translateX(.9px); }
+      82%{ transform:translateX(-.25px); }
+    }
+
+    @keyframes rain-fall{
+      0%{ transform:translateY(-2px); opacity:0; }
+      20%{ opacity:.72; }
+      100%{ transform:translateY(6px); opacity:0; }
+    }
+
+    ::selection{
+      background:#d7d7d1;
+      color:#111;
+    }
+
+    @media (max-width:620px){
+      .site-shell{
+        width:min(calc(100% - 28px), var(--max));
+        padding-top:22px;
       }
 
-      h1 {
-        margin-bottom: 0.8rem;
+      .project-row{
+        grid-template-columns:44px minmax(0,1fr) auto;
+        gap:8px 10px;
       }
 
-      .tagline {
-        margin-bottom: 2rem;
-        font-size: 0.95rem;
+      .status{
+        grid-column:3;
+        text-align:right;
+        margin-left:0;
+        color:var(--muted);
+        font-size:12px;
       }
 
-      .btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.75rem;
-        width: 85%;
-        margin: 0.5rem auto;
-        display: block;
+      .new-badge{
+        width:34px;
+        height:34px;
+        font-size:7px;
       }
 
-      #spotify {
-        margin-top: 1.5rem;
-        padding-top: 1.5rem;
+      .project-copy{
+        max-width:none;
       }
 
-      #spotify a {
-        font-size: 0.85rem;
+      .project-row.active{
+        box-shadow:none;
+      }
+
+      footer{
+        justify-content:flex-end;
+      }
+
+      .footer-presence{
+        gap:4px;
+        white-space:normal;
+        flex-wrap:wrap;
+        justify-content:flex-end;
       }
     }
 
-    @media (max-width: 360px) {
-      .card {
-        padding: 2rem 1.2rem;
-      }
-
-      h1 {
-        font-size: 1.8rem;
-        margin-bottom: 0.8rem;
-      }
-
-      .tagline {
-        font-size: 0.95rem;
-        margin-bottom: 2rem;
-      }
-
-      .btn {
-        padding: 0.65rem 1.2rem;
-        font-size: 0.75rem;
-        margin: 0.5rem auto;
-      }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .project-row,
+      .project-desc,
+      .toggle::after,
+      .scrim{transition:none}
+      .spinner,
+      .new-badge,
+      .owl-state,
+      .sleep-z,
+      .night-pupil,
+      .rain-drop{animation:none !important}
     }
   </style>
 </head>
 
 <body>
+  <button class="scrim" type="button" aria-label="Close project details"></button>
 
-<script>
-  for (let i = 0; i < 40; i++) {
-    const bubble = document.createElement('div');
-    bubble.classList.add('bubble');
-    bubble.style.width = bubble.style.height = (Math.random() * 40 + 20) + 'px';
-    bubble.style.left = Math.random() * 100 + 'vw';
-    bubble.style.animationDuration = (Math.random() * 8 + 6) + 's';
-    bubble.style.animationDelay = (Math.random() * 5) + 's';
-    document.body.appendChild(bubble);
-  }
-</script>
+  <main class="site-shell">
+    <section class="intro">
+      <h1>Tolú</h1>
+      <p class="updated">Updated September 3, 2026</p>
 
-<div class="card">
-  <h1>Toluwalope Kolawole</h1>
-  <p class="tagline">Consulting for media, creative, and tech brands ready to level up their reputation, reach, and revenue.</p>
+      <p>I was born in <strong>Ibadan, Nigeria</strong>, and now live in <strong>Lagos, Nigeria</strong>.</p>
+      <p>I currently work at the <strong>BBC World Service</strong> as <strong>Partnerships Associate, West Africa</strong> for <strong>BBC News Africa</strong>.</p>
+    </section>
 
-  <a class="btn" href="resume.pdf" target="_blank">📄 resume</a>
-  <a class="btn" href="https://myservices-rose.vercel.app/" target="_blank">🌐 services</a>
-  <a class="btn" href="https://linktr.ee/toluwalopekolawole" target="_blank">💬 chat</a>
+    <section class="bio" aria-label="About">
+      <p>I’ve spent the last <strong>3.5+ years</strong> at <strong>BBC News</strong> working across the systems that determine how media reaches people: broadcasters, telecoms, publishers, platforms and partnerships. I’ve helped shape <strong>distribution, partner operations and audience growth across African markets</strong>, whether the audience gets there through an antenna or an app icon. Attention does not care whether we call it <strong>linear or digital</strong>.</p>
 
-  <div id="spotify">
-    <a href="https://www.linkedin.com/in/toluwalope1/" target="_blank">🌿 let's connect on LinkedIn</a>
-  </div>
-</div>
+      <p>I joined in 2023 in <strong>Business Development</strong> and now work in <strong>World Service Partnerships</strong>. Apparently, if you spend enough time helping partnerships actually work, somebody eventually puts <strong>Partnerships</strong> in your job title.</p>
 
+      <p>Before the BBC, I worked across operations at <strong>DHL</strong>, product and data visualisation at <strong>Prifina</strong>, and entrepreneurship through <strong>ADRELATED</strong>. I’m also a <strong>Director at Pathway Model School</strong> in Akure, where I’ve been involved in my family’s education business for several years.</p>
+
+      <p>You can find the longer version of my work in my <a href="https://drive.google.com/file/d/1fRKoGN8x8eKFFCnOwRhKzHSt3IcczSZU/view" target="_blank" rel="noreferrer"><strong>Professional Record</strong></a>, or <a href="https://cal.com/dont4getmybread" target="_blank" rel="noreferrer"><strong>book some time with me</strong></a> if you’d rather talk.</p>
+
+      <p>I’m also on <a href="https://x.com/dont4getmybread" target="_blank" rel="noreferrer"><strong>X</strong></a>, <a href="https://www.linkedin.com/in/dont4getmybread/" target="_blank" rel="noreferrer"><strong>LinkedIn</strong></a>, <a href="https://www.instagram.com/dont4getmybread/" target="_blank" rel="noreferrer"><strong>Instagram</strong></a> and <a href="https://www.youtube.com/@dont4getmybread" target="_blank" rel="noreferrer"><strong>YouTube</strong></a>. You can check my <a href="https://github.com/dont4getmybread" target="_blank" rel="noreferrer"><strong>GitHub</strong></a> too. I’m working on making the contribution graph offensively green by next year.</p>
+
+      <p>I also keep <a href="https://beneficial-weeder-e0f.notion.site/What-I-m-Reading-034e3c68bd0e4de4a06b673c702c0c3f" target="_blank" rel="noreferrer"><strong>What I’m Reading</strong></a>, a small passion project where I collect the things I’m reading, thinking about and occasionally disappearing down a rabbit hole over.</p>
+
+      <p>Or just <a href="mailto:Tolu7711@gmail.com"><strong>email me</strong></a>.</p>
+    </section>
+
+    <section aria-labelledby="build-log">
+      <h2 class="build-heading" id="build-log">Build Log</h2>
+
+      <div class="build-list">
+
+        <article class="project-row">
+          <div class="year">2026</div>
+          <div class="project-main">
+            <div class="project-line">
+              <button class="toggle" type="button" aria-expanded="false" aria-label="Show Pull to Refresh details"></button>
+              <a class="project-name" href="https://pulltorefresh.beehiiv.com/" target="_blank" rel="noreferrer">Pull to Refresh</a>
+              <span class="new-badge" aria-label="New">NEW</span>
+            </div>
+            <div class="project-desc">
+              <div class="project-desc-inner">
+                <p class="project-copy">Everything you need to know about the <strong>business of attention</strong>, because apparently attention has a business model now.</p>
+              </div>
+            </div>
+          </div>
+          <div class="status">18/06</div>
+        </article>
+
+        <article class="project-row">
+          <div class="year"></div>
+          <div class="project-main">
+            <div class="project-line">
+              <button class="toggle" type="button" aria-expanded="false" aria-label="Show Tolumakescoolsites details"></button>
+              <a class="project-name" href="https://tolumakescoolsites.com/" target="_blank" rel="noreferrer">Tolumakescoolsites</a>
+            </div>
+            <div class="project-desc">
+              <div class="project-desc-inner">
+                <p class="project-copy">Websites and web design services for people who want their users to have a good <strong>experience</strong> and, ideally, complete the objective instead of wandering around confused. A surprisingly high bar.</p>
+              </div>
+            </div>
+          </div>
+          <div class="status"><span class="loading">Loading <span class="spinner" aria-hidden="true"></span></span></div>
+        </article>
+
+        <article class="project-row">
+          <div class="year"></div>
+          <div class="project-main">
+            <div class="project-line">
+              <button class="toggle" type="button" aria-expanded="false" aria-label="Show For the Love of the Game details"></button>
+              <a class="project-name" href="https://app.notion.com/p/3ae23429983080b882c4d4e3dfadb746" target="_blank" rel="noreferrer">For the Love of the Game</a>
+            </div>
+            <div class="project-desc">
+              <div class="project-desc-inner">
+                <p class="project-copy">Independent, <strong>Africa centered research</strong> on media policy, economics and technology, written for policymakers, academics, media executives and technology companies. Because serious research does not have to read like punishment.</p>
+              </div>
+            </div>
+          </div>
+          <div class="status"><span class="loading">Loading <span class="spinner" aria-hidden="true"></span></span></div>
+        </article>
+
+        <article class="project-row">
+          <div class="year"></div>
+          <div class="project-main">
+            <div class="project-line">
+              <button class="toggle" type="button" aria-expanded="false" aria-label="Show Goodluck Ltd details"></button>
+              <span class="project-name plain">Goodluck Ltd</span>
+            </div>
+            <div class="project-desc">
+              <div class="project-desc-inner">
+                <p class="project-copy"><strong>Made in Nigeria denim</strong>, starting with white denim reworked through Nigerian print and textile treatments with local makers. Because apparently plain white denim was asking for trouble.</p>
+              </div>
+            </div>
+          </div>
+          <div class="status"><span class="loading">Loading <span class="spinner" aria-hidden="true"></span></span></div>
+        </article>
+
+        <article class="project-row">
+          <div class="year"></div>
+          <div class="project-main">
+            <div class="project-line">
+              <button class="toggle" type="button" aria-expanded="false" aria-label="Show 47 Wood details"></button>
+              <span class="project-name plain">47 Wood</span>
+            </div>
+            <div class="project-desc">
+              <div class="project-desc-inner">
+                <p class="project-copy">An idea for an <strong>AI professional services company for the attention economy</strong> across media, sports, music, advertising, creators and entertainment. Currently pre product, pre revenue and, most importantly, pre pretending otherwise.</p>
+              </div>
+            </div>
+          </div>
+          <div class="status"><span class="loading">Loading <span class="spinner" aria-hidden="true"></span></span></div>
+        </article>
+
+      </div>
+    </section>
+
+    <footer>
+      <span class="footer-presence" aria-live="polite">
+        <span class="condition-icon" id="condition-icon" data-state="day" aria-hidden="true">
+          <svg class="condition-svg" viewBox="0 0 16 16" role="img" aria-hidden="true">
+            <g class="condition-part condition-day">
+              <circle class="owl-stroke" cx="8" cy="8" r="2.6"/>
+              <path class="owl-stroke" d="M8 1.5v2"/>
+              <path class="owl-stroke" d="M8 12.5v2"/>
+              <path class="owl-stroke" d="M1.5 8h2"/>
+              <path class="owl-stroke" d="M12.5 8h2"/>
+              <path class="owl-stroke" d="m3.4 3.4 1.4 1.4"/>
+              <path class="owl-stroke" d="m11.2 11.2 1.4 1.4"/>
+              <path class="owl-stroke" d="m11.2 4.8 1.4-1.4"/>
+              <path class="owl-stroke" d="m3.4 12.6 1.4-1.4"/>
+            </g>
+            <g class="condition-part condition-night">
+              <path class="owl-stroke" d="M10.9 2.2a5.8 5.8 0 1 0 2.9 10.8A5 5 0 1 1 10.9 2.2Z"/>
+              <path class="owl-stroke" d="M11.9 4.1v1.1"/>
+              <path class="owl-stroke" d="M11.35 4.65h1.1"/>
+            </g>
+            <g class="condition-part condition-rain">
+              <path class="owl-stroke" d="M5.1 11.1h5.8a2.4 2.4 0 0 0 .2-4.8 3.4 3.4 0 0 0-6.4.8A2 2 0 0 0 5.1 11.1Z"/>
+              <path class="owl-stroke" d="M5.8 12.2 5.1 14"/>
+              <path class="owl-stroke" d="M8.2 12.2 7.5 14"/>
+              <path class="owl-stroke" d="M10.6 12.2 9.9 14"/>
+            </g>
+          </svg>
+          <span class="sr-only" id="condition-label">Day</span>
+        </span>
+        <span class="lagos-time" id="lagos-time"></span>
+        <span class="owl-badge" id="owl-badge" data-state="day" aria-hidden="true">
+          <svg class="owl-svg" viewBox="0 0 46 30" role="img" aria-hidden="true">
+
+            <!-- Day: tucked-in, sleeping -->
+            <g class="owl-state owl-day">
+              <path class="owl-stroke" d="M13 23c0-6.9 4-11.8 10-11.8S33 16.1 33 23"/>
+              <path class="owl-stroke" d="M16 13.2 19 9.3l4 2.7 4-2.7 3 3.9"/>
+              <path class="owl-stroke" d="M14 23c2.4-2 5.4-3 9-3s6.6 1 9 3"/>
+              <path class="owl-stroke" d="M16.8 15.7c1.1 1 2.8 1 3.9 0"/>
+              <path class="owl-stroke" d="M25.3 15.7c1.1 1 2.8 1 3.9 0"/>
+              <path class="owl-stroke" d="M21.5 17.8h3l-1.5 1.8-1.5-1.8Z"/>
+              <path class="owl-stroke sleep-z one" d="M34 10h3.8l-3.8 3.2h3.8"/>
+              <path class="owl-stroke sleep-z two" d="M37.5 6.4h2.8l-2.8 2.4h2.8"/>
+            </g>
+
+            <!-- Night: upright, alert, scanning -->
+            <g class="owl-state owl-night">
+              <path class="owl-stroke" d="M12.5 23c0-7.3 4.2-12.5 10.5-12.5S33.5 15.7 33.5 23"/>
+              <path class="owl-stroke" d="M15.3 12.6 18.8 7.7 23 11l4.2-3.3 3.5 4.9"/>
+              <path class="owl-stroke" d="M13.5 23c2.6-1.7 5.8-2.6 9.5-2.6s6.9.9 9.5 2.6"/>
+              <circle class="owl-stroke" cx="18.5" cy="15" r="2.35"/>
+              <circle class="owl-stroke" cx="27.5" cy="15" r="2.35"/>
+              <circle class="owl-fill night-pupil" cx="18.5" cy="15" r=".75"/>
+              <circle class="owl-fill night-pupil" cx="27.5" cy="15" r=".75"/>
+              <path class="owl-stroke" d="M21.4 17.5h3.2L23 19.4l-1.6-1.9Z"/>
+              <path class="owl-stroke" d="M12.8 18.7 9.8 16.5"/>
+              <path class="owl-stroke" d="M33.2 18.7 36.2 16.5"/>
+            </g>
+
+            <!-- Rain: sheltered under tiny umbrella -->
+            <g class="owl-state owl-rain">
+              <path class="owl-stroke" d="M14.3 23c0-6.4 3.5-10.8 8.7-10.8S31.7 16.6 31.7 23"/>
+              <path class="owl-stroke" d="M17 14.1 19.5 10.8 23 13l3.5-2.2 2.5 3.3"/>
+              <path class="owl-stroke" d="M15.2 23c2-1.5 4.6-2.3 7.8-2.3s5.8.8 7.8 2.3"/>
+              <path class="owl-stroke" d="M17.4 16c1 .8 2.3.8 3.2 0"/>
+              <path class="owl-stroke" d="M25.4 16c1 .8 2.3.8 3.2 0"/>
+              <path class="owl-stroke" d="M21.5 18h3L23 19.7 21.5 18Z"/>
+              <path class="owl-stroke" d="M9 9.5c3.8-4.6 8.3-6.8 13.6-6.8 5.4 0 10 2.2 13.8 6.8-2.1-.7-4-.7-5.8.1-2-.9-4-.9-6 0-2-.9-4-.9-6 0-1.9-.8-3.8-.8-5.7-.1H9Z"/>
+              <path class="owl-stroke" d="M22.6 2.9v8.3"/>
+              <path class="owl-stroke" d="M22.6 11.2c0 2 1 3 2.4 3"/>
+              <path class="owl-stroke rain-drop one" d="M6.5 7.3 5.7 9.2"/>
+              <path class="owl-stroke rain-drop two" d="M39.8 7.5 39 9.4"/>
+              <path class="owl-stroke rain-drop three" d="M42.7 12.1 41.9 14"/>
+            </g>
+
+          </svg>
+        </span>
+      </span>
+    </footer>
+  </main>
+
+  <script>
+    const rows = [...document.querySelectorAll('.project-row')];
+    const toggles = [...document.querySelectorAll('.toggle')];
+    const scrim = document.querySelector('.scrim');
+
+    function closeAll() {
+      rows.forEach(row => row.classList.remove('active'));
+      toggles.forEach(toggle => {
+        toggle.setAttribute('aria-expanded', 'false');
+        const name = toggle.closest('.project-line').querySelector('.project-name').textContent.trim();
+        toggle.setAttribute('aria-label', `Show ${name} details`);
+      });
+      document.body.classList.remove('project-open');
+    }
+
+    function openRow(row, toggle) {
+      closeAll();
+      row.classList.add('active');
+      toggle.setAttribute('aria-expanded', 'true');
+      const name = toggle.closest('.project-line').querySelector('.project-name').textContent.trim();
+      toggle.setAttribute('aria-label', `Hide ${name} details`);
+      document.body.classList.add('project-open');
+
+      window.setTimeout(() => {
+        row.scrollIntoView({behavior:'smooth', block:'center'});
+      }, 70);
+    }
+
+    toggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const row = toggle.closest('.project-row');
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        if (isOpen) closeAll();
+        else openRow(row, toggle);
+      });
+    });
+
+    scrim.addEventListener('click', closeAll);
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeAll();
+    });
+
+    const lagosTime = document.getElementById('lagos-time');
+    const owlBadge = document.getElementById('owl-badge');
+    const conditionLabel = document.getElementById('condition-label');
+    const conditionIcon = document.getElementById('condition-icon');
+
+    let weatherState = null;
+
+    function lagosHourNow() {
+      return Number(new Intl.DateTimeFormat('en-GB', {
+        timeZone:'Africa/Lagos',
+        hour:'2-digit',
+        hour12:false
+      }).format(new Date()));
+    }
+
+    function fallbackState() {
+      const hour = lagosHourNow();
+      return (hour >= 18 || hour < 6) ? 'night' : 'day';
+    }
+
+    function updateFooterClock() {
+      const now = new Date();
+      const time = new Intl.DateTimeFormat('en-GB', {
+        timeZone:'Africa/Lagos',
+        hour:'2-digit',
+        minute:'2-digit',
+        second:'2-digit',
+        hour12:false
+      }).format(now);
+
+      const state = weatherState || fallbackState();
+      const label = state === 'rain' ? 'Raining' : state === 'night' ? 'Night' : 'Day';
+
+      conditionLabel.textContent = label;
+      conditionIcon.dataset.state = state;
+      lagosTime.textContent = `${time} in Lagos, Nigeria`;
+      owlBadge.dataset.state = state;
+    }
+
+    function weatherCodeSuggestsRain(code) {
+      return (
+        (code >= 51 && code <= 67) ||
+        (code >= 80 && code <= 82) ||
+        (code >= 95 && code <= 99)
+      );
+    }
+
+    async function refreshLagosWeather() {
+      try {
+        const url = 'https://api.open-meteo.com/v1/forecast?latitude=6.5244&longitude=3.3792&current=precipitation,rain,showers,weather_code,is_day&timezone=Africa%2FLagos';
+        const response = await fetch(url, { cache:'no-store' });
+        if (!response.ok) throw new Error('weather unavailable');
+
+        const data = await response.json();
+        const current = data.current || {};
+        const raining =
+          Number(current.precipitation || 0) > 0 ||
+          Number(current.rain || 0) > 0 ||
+          Number(current.showers || 0) > 0 ||
+          weatherCodeSuggestsRain(Number(current.weather_code));
+
+        weatherState = raining ? 'rain' : Number(current.is_day) === 1 ? 'day' : 'night';
+      } catch (error) {
+        weatherState = null;
+      }
+
+      updateFooterClock();
+    }
+
+    updateFooterClock();
+    refreshLagosWeather();
+
+    setInterval(updateFooterClock, 1000);
+    setInterval(refreshLagosWeather, 10 * 60 * 1000);
+  </script>
 </body>
 </html>
