@@ -5,21 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tolú</title>
   <meta name="description" content="Tolú. Creative operator, strategist and dealmaker working across attention, distribution, platforms, partnerships, events and audience growth.">
-  <meta name="theme-color" content="#f7f7f4">
+  <meta name="theme-color" content="#fbfbfa">
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fill="%23343431" d="M32 2l6.4 20.1L56 8 41.9 25.6 62 32l-20.1 6.4L56 56 38.4 41.9 32 62l-6.4-20.1L8 56l14.1-17.6L2 32l20.1-6.4L8 8l17.6 14.1z"/></svg>'>
 
   <style>
     :root{
-      --bg:#f7f7f4;
-      --text:#232321;
-      --muted:#797972;
-      --line:#e3e3df;
+      --bg:#fbfbfa;
+      --text:#343431;
+      --muted:#989891;
+      --line:#ecece8;
       --link-bg:#e9e9e6;
       --link-hover:#deded9;
       --focus-shadow:0 0 0 18px var(--bg);
       --max:560px;
       --twitter:#1DA1F2;
-      --dark:#1f1f1d;
-      --dark-muted:#4e4e49;
+      --dark:#20201e;
+      --dark-muted:#55554f;
     }
 
     *{box-sizing:border-box}
@@ -32,7 +33,8 @@
       transition:background .22s ease, color .22s ease;
       font-family:Arial, Helvetica, sans-serif;
       font-size:15px;
-      line-height:1.58;
+      line-height:1.56;
+      letter-spacing:-0.004em;
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
@@ -40,7 +42,7 @@
     .site-shell{
       width:min(calc(100% - 36px), var(--max));
       margin:0 auto;
-      padding:29px 0 54px;
+      padding:46px 0 64px;
     }
 
     h1,h2,p{margin-top:0}
@@ -53,13 +55,13 @@
     }
 
     .updated{
-      margin-bottom:27px;
+      margin-bottom:31px;
       color:var(--muted);
       font-size:13px;
     }
 
     p{
-      margin-bottom:18px;
+      margin-bottom:21px;
     }
 
     strong{
@@ -72,7 +74,7 @@
       text-decoration:underline;
       text-decoration-thickness:1px;
       text-underline-offset:3px;
-      text-decoration-color:rgba(43,43,40,.14);
+      text-decoration-color:rgba(52,52,49,.08);
       padding:0;
       transition:color .15s ease, text-decoration-color .15s ease, opacity .15s ease;
     }
@@ -80,16 +82,16 @@
     a:hover,
     a:focus-visible{
       color:#000;
-      text-decoration-color:rgba(43,43,40,.46);
+      text-decoration-color:rgba(52,52,49,.50);
       outline:none;
     }
 
     .intro{
-      margin-bottom:26px;
+      margin-bottom:34px;
     }
 
     .bio{
-      margin-bottom:38px;
+      margin-bottom:50px;
     }
 
     .build-heading{
@@ -110,7 +112,7 @@
       display:grid;
       grid-template-columns:90px minmax(0,1fr) auto;
       gap:18px;
-      padding:12px 0;
+      padding:14px 0;
       border-bottom:1px solid var(--line);
       transition:opacity .18s ease, filter .18s ease;
     }
@@ -144,10 +146,6 @@
     .project-row.active a:focus-visible{
       color:#ffffff;
       text-decoration-color:#ffffff;
-    }
-
-    .project-row.active .toggle{
-      border-color:#2a2a27;
     }
 
     .year{
@@ -585,6 +583,92 @@
       100%{ transform:translateY(6px); opacity:0; }
     }
 
+
+    .music-control{
+      position:fixed;
+      left:22px;
+      bottom:20px;
+      z-index:24;
+      display:flex;
+      align-items:flex-end;
+      gap:8px;
+    }
+
+    .music-toggle{
+      width:30px;
+      height:30px;
+      border:1px solid rgba(52,52,49,.15);
+      border-radius:50%;
+      background:rgba(251,251,250,.9);
+      color:var(--muted);
+      display:grid;
+      place-items:center;
+      padding:0;
+      cursor:pointer;
+      font-size:14px;
+      line-height:1;
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      transition:color .16s ease, border-color .16s ease, transform .16s ease, background .16s ease;
+    }
+
+    .music-toggle:hover,
+    .music-toggle:focus-visible{
+      color:var(--text);
+      border-color:rgba(52,52,49,.35);
+      transform:translateY(-1px);
+      outline:none;
+    }
+
+    .music-panel{
+      width:300px;
+      max-height:0;
+      opacity:0;
+      overflow:hidden;
+      pointer-events:none;
+      transform:translateY(6px);
+      transition:max-height .25s ease, opacity .18s ease, transform .18s ease;
+    }
+
+    .music-control.open .music-panel{
+      max-height:180px;
+      opacity:1;
+      pointer-events:auto;
+      transform:translateY(0);
+    }
+
+    .music-now{
+      margin:0 0 6px 2px;
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.35;
+    }
+
+    #spotify-embed,
+    #spotify-embed iframe{
+      width:100% !important;
+      height:152px !important;
+      border:0;
+      border-radius:10px;
+      display:block;
+    }
+
+    #spotify-embed iframe{
+      box-shadow:0 8px 28px rgba(0,0,0,.08);
+    }
+
+    body.project-open .music-toggle{
+      background:rgba(32,32,30,.9);
+      color:#777771;
+      border-color:rgba(255,255,255,.09);
+    }
+
+    body.project-open .music-toggle:hover,
+    body.project-open .music-toggle:focus-visible{
+      color:#fff;
+      border-color:rgba(255,255,255,.24);
+    }
+
     ::selection{
       background:#d7d7d1;
       color:#111;
@@ -593,7 +677,16 @@
     @media (max-width:620px){
       .site-shell{
         width:min(calc(100% - 28px), var(--max));
-        padding-top:22px;
+        padding-top:34px;
+      }
+
+      .music-control{
+        left:12px;
+        bottom:12px;
+      }
+
+      .music-panel{
+        width:min(290px, calc(100vw - 58px));
       }
 
       .project-row{
@@ -652,6 +745,17 @@
 </head>
 
 <body>
+
+  <!-- Five-track Drake soundtrack. User gesture starts playback; tracks advance and loop via Spotify iFrame API. -->
+  <div class="music-control" id="music-control">
+    <button class="music-toggle" id="music-toggle" type="button" aria-expanded="false" aria-controls="music-panel" aria-label="Open music">
+      ♪
+    </button>
+    <div class="music-panel" id="music-panel">
+      <div class="music-now" id="music-now">Drake · Burning Bridges · 1/5</div>
+      <div id="spotify-embed"></div>
+    </div>
+  </div>
   <button class="scrim" type="button" aria-label="Close project details"></button>
 
   <main class="site-shell">
@@ -668,7 +772,7 @@
 
       <p>I joined in 2023 in <strong>Business Development</strong> and now work in <strong>World Service Partnerships</strong>. Apparently, if you spend enough time helping partnerships actually work, somebody eventually puts <strong>Partnerships</strong> in your job title.</p>
 
-      <p>Before the BBC, I worked across operations at <strong>DHL</strong>, product and data visualisation at <strong>Prifina</strong>, and entrepreneurship through <strong>ADRELATED</strong>. I’m also a <strong>Director at Pathway Model School</strong> in Akure, where I’ve been involved in my family’s education business for several years.</p>
+      <p>Before the BBC, I worked as a <strong>management trainee</strong> across operations and business support at <a href="https://group.dhl.com/en.html" target="_blank" rel="noreferrer"><strong>DHL</strong></a>, contributed to product and data visualisation at <a href="https://prifina.com/" target="_blank" rel="noreferrer"><strong>Prifina</strong></a>, and worked on entrepreneurship through <a href="https://www.instagram.com/adrelated/" target="_blank" rel="noreferrer"><strong>ADRELATED</strong></a>, a three person circular fashion and cultural commerce project where I ran publishing, inventory, sales, logistics and finance. I’m also a <strong>Director at Pathway Model School</strong> in Akure, where I’ve been involved in my family’s education business for several years.</p>
 
       <p>You can find the longer version of my work in my <a href="https://drive.google.com/file/d/1fRKoGN8x8eKFFCnOwRhKzHSt3IcczSZU/view" target="_blank" rel="noreferrer"><strong>Professional Record</strong></a>, or <a href="https://cal.com/dont4getmybread" target="_blank" rel="noreferrer"><strong>book some time with me</strong></a> if you’d rather talk.</p>
 
@@ -737,12 +841,12 @@
           <div class="year"></div>
           <div class="project-main">
             <div class="project-line">
-              <button class="toggle" type="button" aria-expanded="false" aria-label="Show Goodluck Ltd details"></button>
-              <span class="project-name plain">Goodluck Ltd</span>
+              <button class="toggle" type="button" aria-expanded="false" aria-label="Show Goodluck details"></button>
+              <span class="project-name plain">Goodluck</span>
             </div>
             <div class="project-desc">
               <div class="project-desc-inner">
-                <p class="project-copy"><strong>Made in Nigeria denim</strong>, starting with white denim reworked through Nigerian print and textile treatments with local makers. Because apparently plain white denim was asking for trouble.</p>
+                <p class="project-copy"><strong>Made in Nigeria denim</strong>, starting with white denim reworked through Nigerian print and textile treatments with local makers. <strong>A better lifestyle.</strong></p>
               </div>
             </div>
           </div>
@@ -849,7 +953,97 @@
     </footer>
   </main>
 
+  <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+
   <script>
+
+    const musicControl = document.getElementById('music-control');
+    const musicToggle = document.getElementById('music-toggle');
+    const musicNow = document.getElementById('music-now');
+
+    const soundtrack = [
+      { title:'Burning Bridges', uri:'spotify:track:1ijYk2EYwj0rGqYwtjiAUJ' },
+      { title:'Ran To Atlanta', uri:'spotify:track:3DK90400cDlV5WUJPraMph' },
+      { title:'Plot Twist', uri:'spotify:track:3cLCA9LSb6UiOeNvTZoaav' },
+      { title:'National Treasures', uri:'spotify:track:393OFJFZKIIv66JmJcNm9D' },
+      { title:'What Did I Miss?', uri:'spotify:track:7oDbkGSI3IRzKmhrTiQdID' }
+    ];
+
+    let spotifyController = null;
+    let soundtrackIndex = 0;
+    let advancingTrack = false;
+    let hasStartedSoundtrack = false;
+
+    function updateSoundtrackLabel(){
+      const track = soundtrack[soundtrackIndex];
+      musicNow.textContent = `Drake · ${track.title} · ${soundtrackIndex + 1}/5`;
+    }
+
+    function playSoundtrackTrack(index){
+      if (!spotifyController) return;
+      soundtrackIndex = (index + soundtrack.length) % soundtrack.length;
+      updateSoundtrackLabel();
+      advancingTrack = true;
+
+      spotifyController.loadEntity(soundtrack[soundtrackIndex].uri);
+
+      window.setTimeout(() => {
+        spotifyController.play();
+        advancingTrack = false;
+      }, 450);
+    }
+
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+      const element = document.getElementById('spotify-embed');
+      const options = {
+        width:'100%',
+        height:152,
+        uri:soundtrack[0].uri
+      };
+
+      IFrameAPI.createController(element, options, (controller) => {
+        spotifyController = controller;
+        updateSoundtrackLabel();
+
+        controller.addListener('playback_started', (event) => {
+          hasStartedSoundtrack = true;
+          const playingUri = event?.data?.playingURI;
+          const foundIndex = soundtrack.findIndex(track => track.uri === playingUri);
+          if (foundIndex >= 0) {
+            soundtrackIndex = foundIndex;
+            updateSoundtrackLabel();
+          }
+        });
+
+        controller.addListener('playback_update', (event) => {
+          const data = event?.data;
+          if (!data || advancingTrack || !hasStartedSoundtrack) return;
+
+          const duration = Number(data.duration || 0);
+          const position = Number(data.position || 0);
+
+          if (duration > 0 && position >= duration - 650 && !data.isPaused && !data.isBuffering) {
+            advancingTrack = true;
+            const nextIndex = (soundtrackIndex + 1) % soundtrack.length;
+
+            window.setTimeout(() => {
+              playSoundtrackTrack(nextIndex);
+            }, 220);
+          }
+        });
+      });
+    };
+
+    musicToggle.addEventListener('click', () => {
+      const open = musicControl.classList.toggle('open');
+      musicToggle.setAttribute('aria-expanded', String(open));
+      musicToggle.setAttribute('aria-label', open ? 'Close music' : 'Open music');
+
+      if (open && spotifyController && !hasStartedSoundtrack) {
+        spotifyController.play();
+      }
+    });
+
     const rows = [...document.querySelectorAll('.project-row')];
     const toggles = [...document.querySelectorAll('.toggle')];
     const scrim = document.querySelector('.scrim');
