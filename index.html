@@ -75,7 +75,7 @@
       text-decoration:underline;
       text-decoration-thickness:1px;
       text-underline-offset:3px;
-      text-decoration-color:transparent;
+      text-decoration-color:rgba(29,29,27,.38);
       padding:0;
       transition:color .15s ease, text-decoration-color .15s ease, opacity .15s ease;
     }
@@ -83,7 +83,7 @@
     a:hover,
     a:focus-visible{
       color:#000;
-      text-decoration-color:rgba(29,29,27,.42);
+      text-decoration-color:rgba(29,29,27,.82);
       outline:none;
     }
 
@@ -767,8 +767,18 @@
       }
 
       .project-row{
-        grid-template-columns:44px minmax(0,1fr) auto;
-        gap:8px 10px;
+        grid-template-columns:58px minmax(0,1fr) auto;
+        gap:8px 12px;
+      }
+
+      .project-row::after{
+        left:70px;
+      }
+
+      .toggle{
+        left:-25px;
+        width:18px;
+        height:18px;
       }
 
       .status{
@@ -776,12 +786,12 @@
         text-align:right;
         margin-left:0;
         color:var(--muted);
-        font-size:12px;
+        font-size:14px;
       }
 
       .new-badge{
-        width:34px;
-        height:34px;
+        width:26px;
+        height:26px;
         font-size:7px;
       }
 
@@ -813,6 +823,8 @@
       .scrim{transition:none}
       .spinner,
       .new-badge,
+      .music-toggle,
+      .music-note,
       .owl-state,
       .sleep-z,
       .night-pupil,
