@@ -17,7 +17,7 @@
       --link-bg:#e9e9e6;
       --link-hover:#deded9;
       --focus-shadow:0 0 0 18px var(--bg);
-      --max:560px;
+      --max:550px;
       --twitter:#1DA1F2;
       --dark:#20201e;
       --dark-muted:#55554f;
@@ -75,7 +75,7 @@
       text-decoration:underline;
       text-decoration-thickness:1px;
       text-underline-offset:3px;
-      text-decoration-color:rgba(29,29,27,.06);
+      text-decoration-color:transparent;
       padding:0;
       transition:color .15s ease, text-decoration-color .15s ease, opacity .15s ease;
     }
@@ -97,9 +97,10 @@
 
     .build-heading{
       margin:0;
-      padding-bottom:8px;
+      padding-bottom:7px;
       border-bottom:1px solid var(--line);
-      font-size:15px;
+      color:var(--muted);
+      font-size:14px;
       line-height:1.35;
       font-weight:400;
     }
@@ -111,11 +112,22 @@
     .project-row{
       position:relative;
       display:grid;
-      grid-template-columns:90px minmax(0,1fr) auto;
+      grid-template-columns:75px minmax(0,1fr) auto;
       gap:18px;
-      padding:14px 0;
-      border-bottom:1px solid var(--line);
+      padding:9px 0;
+      border-bottom:0;
       transition:opacity .18s ease, filter .18s ease;
+    }
+
+    .project-row::after{
+      content:"";
+      position:absolute;
+      left:93px;
+      right:0;
+      bottom:0;
+      height:1px;
+      background:var(--line);
+      pointer-events:none;
     }
 
     .project-row.active{
@@ -150,19 +162,22 @@
     }
 
     .year{
+      color:var(--muted);
       font-size:14px;
       line-height:1.55;
     }
 
     .project-main{
       min-width:0;
+      position:relative;
     }
 
     .project-line{
       display:flex;
       align-items:center;
-      gap:8px;
+      gap:7px;
       min-height:22px;
+      position:relative;
     }
 
     .project-name{
@@ -177,16 +192,18 @@
     }
 
     .toggle{
-      flex:0 0 auto;
-      width:22px;
-      height:22px;
-      border:1px solid #77776f;
+      position:absolute;
+      left:-29px;
+      top:50%;
+      transform:translateY(-50%);
+      width:18px;
+      height:18px;
+      border:1px solid #b1b1ad;
       border-radius:50%;
       background:transparent;
       padding:0;
-      position:relative;
       cursor:pointer;
-      color:inherit;
+      color:#7f7f7a;
     }
 
     /* short inner strokes so the + / − never touches the circle */
@@ -196,7 +213,7 @@
       position:absolute;
       left:50%;
       top:50%;
-      width:8px;
+      width:6px;
       height:1px;
       background:currentColor;
       transform:translate(-50%,-50%);
@@ -248,6 +265,7 @@
     }
 
     .status{
+      color:var(--muted);
       white-space:nowrap;
       font-size:14px;
       line-height:1.55;
@@ -265,12 +283,12 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      width:38px;
-      height:38px;
+      width:26px;
+      height:26px;
       margin-left:2px;
       background:var(--twitter);
       color:#fff;
-      font-size:8px;
+      font-size:7px;
       line-height:1;
       font-weight:700;
       letter-spacing:.08em;
@@ -325,7 +343,7 @@
     .spinner{
       width:10px;
       height:10px;
-      border:1px solid #8d8d86;
+      border:1px solid #b5b5b0;
       border-top-color:transparent;
       border-radius:50%;
       animation:spin 1.3s linear infinite;
@@ -380,9 +398,12 @@
       text-decoration-color:rgba(113,113,107,.72);
     }
 
-    body.project-open .build-heading,
-    body.project-open .project-row{
+    body.project-open .build-heading{
       border-color:transparent;
+    }
+
+    body.project-open .project-row::after{
+      background:transparent;
     }
 
     body.project-open .project-row.active,
@@ -596,26 +617,42 @@
     }
 
     .music-toggle{
-      width:30px;
-      height:30px;
-      border:1px solid rgba(29,29,27,.12);
-      border-radius:50%;
-      background:rgba(253,253,252,.94);
-      color:var(--muted);
-      display:grid;
-      place-items:center;
-      padding:0;
+      min-width:118px;
+      height:42px;
+      border:1px solid rgba(29,29,27,.13);
+      border-radius:999px;
+      background:#1d1d1b;
+      color:#ffffff;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      padding:0 15px;
       cursor:pointer;
-      font-size:14px;
+      font-size:12px;
       line-height:1;
+      font-weight:500;
+      letter-spacing:.01em;
       backdrop-filter:blur(10px);
       -webkit-backdrop-filter:blur(10px);
-      transition:color .16s ease, border-color .16s ease, transform .16s ease, background .16s ease;
+      box-shadow:0 8px 26px rgba(29,29,27,.12);
+      transition:background .16s ease, color .16s ease, transform .16s ease, box-shadow .16s ease;
+    }
+
+    .music-note{
+      font-size:18px;
+      line-height:1;
+      transform-origin:center;
+      animation:music-note-float 2.4s ease-in-out infinite;
+    }
+
+    .music-label{
+      white-space:nowrap;
     }
 
 
     .music-toggle{
-      animation:music-breathe 2.8s ease-in-out infinite;
+      animation:music-breathe 2.3s ease-in-out infinite;
       transform-origin:center;
     }
 
@@ -623,21 +660,49 @@
       animation:none;
     }
 
+
+    .music-control.is-scrolling .music-toggle{
+      background:rgba(253,253,252,.12);
+      color:rgba(29,29,27,.28);
+      border-color:rgba(29,29,27,.05);
+      box-shadow:none;
+      backdrop-filter:blur(2px);
+      -webkit-backdrop-filter:blur(2px);
+      animation:none;
+      opacity:.42;
+      pointer-events:none;
+    }
+
+    body.project-open .music-control.is-scrolling .music-toggle{
+      background:rgba(32,32,30,.10);
+      color:rgba(255,255,255,.24);
+      border-color:rgba(255,255,255,.04);
+      box-shadow:none;
+      opacity:.38;
+    }
+
     @keyframes music-breathe{
       0%,100%{
         transform:scale(1);
-        box-shadow:0 0 0 0 rgba(29,29,27,0);
+        box-shadow:0 8px 26px rgba(29,29,27,.12), 0 0 0 0 rgba(29,29,27,.10);
       }
       50%{
-        transform:scale(1.08);
-        box-shadow:0 0 0 5px rgba(29,29,27,.035);
+        transform:scale(1.045);
+        box-shadow:0 10px 30px rgba(29,29,27,.16), 0 0 0 9px rgba(29,29,27,.045);
       }
+    }
+
+    @keyframes music-note-float{
+      0%,100%{ transform:translateY(0) rotate(0deg); }
+      50%{ transform:translateY(-1px) rotate(-5deg); }
     }
 
     .music-toggle:hover,
     .music-toggle:focus-visible{
-      color:var(--text);
-      border-color:rgba(29,29,27,.28);
+      background:#000000;
+      color:#ffffff;
+      transform:translateY(-1px);
+      box-shadow:0 12px 32px rgba(29,29,27,.18);
       outline:none;
     }
 
@@ -669,15 +734,16 @@
     }
 
     body.project-open .music-toggle{
-      background:rgba(32,32,30,.9);
-      color:#777771;
-      border-color:rgba(255,255,255,.09);
+      background:#ffffff;
+      color:#1d1d1b;
+      border-color:rgba(255,255,255,.16);
+      box-shadow:0 8px 26px rgba(0,0,0,.20);
     }
 
     body.project-open .music-toggle:hover,
     body.project-open .music-toggle:focus-visible{
-      color:#fff;
-      border-color:rgba(255,255,255,.24);
+      background:#f2f2ef;
+      color:#000000;
     }
 
     ::selection{
@@ -759,8 +825,9 @@
 
   <!-- Apple Music playlist soundtrack. Playback is user-initiated inside Apple's embed. -->
   <div class="music-control" id="music-control">
-    <button class="music-toggle" id="music-toggle" type="button" aria-expanded="false" aria-controls="music-panel" aria-label="Open music">
-      ♪
+    <button class="music-toggle" id="music-toggle" type="button" aria-expanded="false" aria-controls="music-panel" aria-label="Open soundtrack">
+      <span class="music-note" aria-hidden="true">♪</span>
+      <span class="music-label" id="music-label">Soundtrack</span>
     </button>
     <div class="music-panel" id="music-panel">
       <iframe
@@ -974,12 +1041,27 @@
 
     const musicControl = document.getElementById('music-control');
     const musicToggle = document.getElementById('music-toggle');
+    const musicLabel = document.getElementById('music-label');
 
     musicToggle.addEventListener('click', () => {
       const open = musicControl.classList.toggle('open');
       musicToggle.setAttribute('aria-expanded', String(open));
-      musicToggle.setAttribute('aria-label', open ? 'Close music' : 'Open music');
+      musicToggle.setAttribute('aria-label', open ? 'Close soundtrack' : 'Open soundtrack');
+      musicLabel.textContent = open ? 'Close' : 'Soundtrack';
     });
+
+    let soundtrackScrollTimer = null;
+
+    window.addEventListener('scroll', () => {
+      if (!musicControl.classList.contains('open')) {
+        musicControl.classList.add('is-scrolling');
+      }
+
+      clearTimeout(soundtrackScrollTimer);
+      soundtrackScrollTimer = window.setTimeout(() => {
+        musicControl.classList.remove('is-scrolling');
+      }, 320);
+    }, { passive:true });
 
     const rows = [...document.querySelectorAll('.project-row')];
     const toggles = [...document.querySelectorAll('.toggle')];
